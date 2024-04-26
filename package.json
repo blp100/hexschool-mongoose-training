@@ -1,0 +1,17 @@
+{
+  "name": "hexschool-mongoose-training",
+  "version": "1.0.0",
+  "description": "Developing MongoDB skills by using Mongoose to connect to Atlas on Node.js.\"",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "node check.js"
+  },
+  "author": "Po-Cheng Yeh",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.3.2"
+  }
+}
