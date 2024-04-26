@@ -24,8 +24,6 @@ Please connect to the MongoDB cloud atlas database. You can refer to the followi
     - Deploying to Render hosting platform
 
 ### Bonus Points
-Please refer to this example and pull from the Model folder for design inspiration.
+Please refer to this [example](https://github.com/gonsakon/nodeweek2-sample) and pull from the Model folder for design inspiration.
 
 ## Thinking Process
-
-# hexschool-mongoose-training
