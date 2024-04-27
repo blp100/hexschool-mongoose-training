@@ -70,8 +70,12 @@ const server = http.createServer(async (req, res) => {
   } else if (url.startsWith("/posts/") && method === "DELETE") {
     const postId = url.split("/").pop();
     try {
-      await PostModel.findByIdAndDelete(postId);
-      successHandler(res, 200, null);
+      const deletedPost = await PostModel.findByIdAndDelete(postId);
+      if (!deletedPost) {
+        errorHandler(res, 400, "No post found with the specified ID");
+      } else {
+        successHandler(res, 200, [deletedPost]);
+      }
     } catch (er) {
       errorHandler(res, 400, er.message);
     }
