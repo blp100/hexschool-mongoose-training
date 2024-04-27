@@ -1,4 +1,4 @@
-import { HEADERS } from "./constants.js";
+import { HEADERS } from "../constants.js";
 
 const errorHandler = (res, resCode, msg = "") => {
   res.writeHead(resCode, HEADERS);
