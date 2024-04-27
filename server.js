@@ -51,6 +51,7 @@ const server = http.createServer(async (req, res) => {
 
         successHandler(res, 200, [newPost]);
       } catch (er) {
+        // Chheck all errors in this part
         if (er.name === "ValidationError") {
           // Extract validation error messages
           const errorMessages = Object.values(er.errors).map(
@@ -66,24 +67,38 @@ const server = http.createServer(async (req, res) => {
     await PostModel.deleteMany({});
     successHandler(res, 200, null);
   } else if (url.startsWith("/posts/") && method === "DELETE") {
-    await PostModel.findByIdAndDelete(id);
-    successHandler(res, 200, null);
+    const postId = url.split("/").pop();
+    try {
+      await PostModel.findByIdAndDelete(postId);
+      successHandler(res, 200, null);
+    } catch (er) {
+      errorHandler(res, 400, er.message);
+    }
   } else if (url.startsWith("/posts/") && method === "PATCH") {
-    const posts = await PostModel.find();
-    const todoId = url.split("/").pop();
-    const indexOfTodoId = posts.findIndex((element) => element.id === todoId);
-    req.on("end", () => {
+    const postId = url.split("/").pop();
+    req.on("end", async () => {
       try {
         const data = JSON.parse(body);
-        const title = data.title;
-        if (indexOfTodoId !== -1 && title !== undefined) {
-          posts[indexOfTodoId].title = title;
-          successHandler(res, 201, posts);
-        } else {
-          errorHandler(res, 400, "ID not recognized or not found");
+
+        // updatedPost is the post after `update` was applied because of
+        // `new: true`
+        const updatedPost = await PostModel.findByIdAndUpdate(postId, data, {
+          new: true,
+          runValidators: true,
+        });
+
+        if (!updatedPost) {
+          errorHandler(res, 404, "Post not found");
+          return;
         }
+        successHandler(res, 200, updatedPost);
       } catch (er) {
-        errorHandler(res, 400, er.message);
+        if (er.name === "ValidationError") {
+          const invalidField = Object.keys(er.errors)[0];
+          errorHandler(res, 400, `${invalidField} is not a valid field`);
+        } else {
+          errorHandler(res, 400, er.message);
+        }
       }
     });
   } else if (method === "OPTIONS") {
