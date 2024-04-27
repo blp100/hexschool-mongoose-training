@@ -5,6 +5,8 @@ import mongoose from "mongoose";
 import errorHandler from "./libs/errorHandler.js";
 import successHandler from "./libs/successHandler.js";
 
+const isLocalConnection = true;
+
 const mongoUser = process.env.MONGODB_USER;
 const mongoPW = process.env.MONGODB_PW;
 const mongoDB = process.env.MONGODB_NAME;
@@ -12,14 +14,17 @@ const remoteAddress = `mongodb+srv://${mongoUser}:${mongoPW}@cluster0.lwx4ahm.mo
 
 // console.log(remoteAddress);
 
+const localDBConnection = async () => {
+  await mongoose.connect("mongodb://127.0.0.1:27017/test");
+};
 
-async function main() {
-  // await mongoose.connect("mongodb://127.0.0.1:27017/test");
+const remoteDBConnection = async () => {
   await mongoose.connect(remoteAddress);
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
-}
+};
 
-main()
+const dbConnetion = isLocalConnection ? localDBConnection : remoteDBConnection;
+
+dbConnetion()
   .then(() => {
     console.log("connected!");
   })
