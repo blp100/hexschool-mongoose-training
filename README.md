@@ -7,7 +7,7 @@
     - [Main Task](#main-task)
     - [Bonus Points](#bonus-points)
 - [Thinking Process](#thinking-process)
-- [Conclusion]()
+- [Conclusion](#conclusion)
 
 ## Overview
 This is a HexSchool assignment that utilizes MongoDB and Mongoose.
