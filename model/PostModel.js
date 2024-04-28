@@ -4,12 +4,14 @@ const postsSchema = new Schema(
   {
     name: {
       type: String,
+      trim: true,
       required: [true, "Post name not filled"],
     },
     tags: {
       type: [
         {
           type: String,
+          trim: true,
           required: [true, "Post tags not filled"],
         },
       ],
@@ -42,6 +44,7 @@ const postsSchema = new Schema(
     },
     content: {
       type: String,
+      trim: true,
       required: [true, "Content not filled"],
     },
     likes: {
