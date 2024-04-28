@@ -2,12 +2,16 @@
 # HexSchool Assignment - Second Week
 
 ## Table of contents
+- [Subject](#subject)
 - [Overview](#overview)
 - [Task Description](#task-description)
     - [Main Task](#main-task)
     - [Bonus Points](#bonus-points)
 - [Thinking Process](#thinking-process)
 - [Conclusion](#conclusion)
+
+## Subject
+Node.js NPM Integration with MongoDB
 
 ## Overview
 This is a HexSchool assignment that utilizes MongoDB and Mongoose.
