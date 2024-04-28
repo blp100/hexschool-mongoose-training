@@ -2,8 +2,8 @@ import http from "http";
 import "dotenv/config";
 // import { PORT } from "./constants.js";
 import mongoose from "mongoose";
-import errorHandler from "./libs/errorHandler.js";
-import successHandler from "./libs/successHandler.js";
+import errorHandler from "./errorHandler.js";
+import successHandler from "./successHandler.js";
 import PostModel from "./model/PostModel.js";
 
 const PORT = process.env.PORT || 3005;
