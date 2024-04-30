@@ -16,8 +16,8 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-mongoDBConnection("local");
-// mongoDBConnection("remote");
+// mongoDBConnection("local");
+mongoDBConnection("remote");
 
 // setup CORS
 app.use(cors());

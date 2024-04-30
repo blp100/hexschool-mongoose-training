@@ -56,4 +56,5 @@ When I encountered an error handling issue with Mongoose Schema, I questioned wh
     - 改用nodemon 就能夠正常重新啟動了
 3. 撰寫controllers
 4. 在route裡撰寫需要和controller溝通的路徑和request method
+request 方式變簡單很多，可以直接拿到id 和 body
 5. controllers裡面的id 需要修改
