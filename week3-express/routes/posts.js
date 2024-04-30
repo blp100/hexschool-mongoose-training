@@ -1,11 +1,7 @@
 import { Router } from "express";
+import { getPosts } from "../controllers/posts.js";
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    status: "success",
-    data: [],
-  });
-});
+router.get("/", getPosts);
 
 export default router;

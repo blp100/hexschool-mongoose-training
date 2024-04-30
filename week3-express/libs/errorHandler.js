@@ -1,8 +1,5 @@
-import { HEADERS } from "../constants.js";
-
-const errorHandler = (res, resCode, msg = "") => {
-  res.writeHead(resCode, HEADERS);
-  res.write(
+const errorHandler = (res, msg = "") => {
+  res.send(
     JSON.stringify({
       status: "failed",
       message: msg,

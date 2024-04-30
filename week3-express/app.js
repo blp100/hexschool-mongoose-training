@@ -8,12 +8,17 @@ import { fileURLToPath } from "url";
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 import postsRouter from "./routes/posts.js";
+import mongoDBConnection from "./connections/mongoDBConnection.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 
+mongoDBConnection("local");
+// mongoDBConnection("remote");
+
+// setup CORS
 app.use(cors());
 
 app.use(logger("dev"));

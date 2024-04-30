@@ -1,15 +1,8 @@
-import { HEADERS } from "../constants.js";
-
-const successHandler = (res, resCode = 200, data, corsOption = false) => {
-  res.writeHead(resCode, HEADERS);
-  if (!corsOption) {
-    res.write(
-      JSON.stringify({
-        status: "success",
-        data,
-      })
-    );
-  }
+const successHandler = (res, data) => {
+  res.send({
+    status: "success",
+    data,
+  });
   res.end();
 };
 

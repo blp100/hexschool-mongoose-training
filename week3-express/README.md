@@ -2,6 +2,7 @@
 # HexSchool Assignment - Third Week
 
 ## Table of contents
+- [Subject](#subject)
 - [Overview](#overview)
 - [Task Description](#task-description)
     - [Main Task](#main-task)
@@ -42,3 +43,17 @@ When I encountered an error handling issue with Mongoose Schema, I questioned wh
 - Enjoyment level: Maybe a 5 out of 10?
 - Learned about: Mongoose validation stack
 - Reflection: Connecting to MongoDB was relatively straightforward, but I found the process of implementing Mongoose validation to be enjoyable.
+
+
+1. 建立環境 ／１小時
+2. 增加posts route ／１.5小時
+- 增加posts路經的時候，一直找不到路徑
+- 改變了__dirname的路徑方式，posts的路徑才變得正常
+    - 懷疑可能是無法抓到正確的路徑
+    - 改回來之後又正常了？總之不知道問題在哪裡
+    - 猜測可能是server沒有重新啟動
+    - 猜測正確，中途修改路徑並不會讓express快速重新啟動
+    - 改用nodemon 就能夠正常重新啟動了
+3. 撰寫controllers
+4. 在route裡撰寫需要和controller溝通的路徑和request method
+5. controllers裡面的id 需要修改
