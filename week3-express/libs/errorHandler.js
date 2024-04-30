@@ -1,10 +1,8 @@
-const errorHandler = (res, msg = "") => {
-  res.send(
-    JSON.stringify({
-      status: "failed",
-      message: msg,
-    })
-  );
+const errorHandler = (res, statusCode, msg = "") => {
+  res.status(statusCode).send({
+    status: "failed",
+    message: msg,
+  });
   res.end();
 };
 
