@@ -7,6 +7,7 @@ import logger from "morgan";
 import { fileURLToPath } from "url";
 import indexRouter from "./routes/index.js";
 import userRouter from "./routes/user.js";
+import usersRouter from "./routes/users.js";
 import postRouter from "./routes/post.js";
 import postsRouter from "./routes/posts.js";
 import mongoDBConnection from "./connections/mongoDBConnection.js";
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // setup route
 app.use("/", indexRouter);
 app.use("/user", userRouter);
+app.use("/users", usersRouter);
 app.use("/post", postRouter);
 app.use("/posts", postsRouter);
 
