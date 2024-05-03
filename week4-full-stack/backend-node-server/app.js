@@ -6,19 +6,20 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { fileURLToPath } from "url";
 import indexRouter from "./routes/index.js";
-import usersRouter from "./routes/users.js";
+import userRouter from "./routes/user.js";
 import postRouter from "./routes/post.js";
 import postsRouter from "./routes/posts.js";
 import mongoDBConnection from "./connections/mongoDBConnection.js";
+// import multer from "multer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
-
-const connectToLocal = true ? "local" : "remote";
-
+// setup Database connection
+const connectToLocal = false ? "local" : "remote";
 mongoDBConnection(connectToLocal);
+
+const app = express();
 
 // setup CORS
 app.use(cors());
@@ -32,7 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // setup route
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/user", userRouter);
 app.use("/post", postRouter);
 app.use("/posts", postsRouter);
 

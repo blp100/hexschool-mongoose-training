@@ -1,9 +1,10 @@
 import { Schema, model } from "mongoose";
 
-const postsSchema = new Schema(
+const postSchema = new Schema(
   {
-    name: {
-      type: String,
+    user: {
+      type: Schema.ObjectId,
+      ref: "user",
       trim: true,
       required: [true, "Post name not filled"],
     },
@@ -15,11 +16,6 @@ const postsSchema = new Schema(
           required: [true, "Post tags not filled"],
         },
       ],
-      /*
-      The original validate function didn't work on objects and arrays, 
-      so I've added a custom validation function here. For more details, 
-      please refer to: https://mongoosejs.com/docs/validation.html
-      */
       validate: {
         validator: (tags) => {
           return tags.length > 0;
@@ -37,7 +33,7 @@ const postsSchema = new Schema(
       type: String,
       default: "",
     },
-    createAt: {
+    createdAt: {
       type: Date,
       default: Date.now,
       select: false,
@@ -59,6 +55,6 @@ const postsSchema = new Schema(
   { versionKey: false }
 );
 
-const PostModel = model("post", postsSchema);
+const PostModel = model("post", postSchema);
 
 export default PostModel;
