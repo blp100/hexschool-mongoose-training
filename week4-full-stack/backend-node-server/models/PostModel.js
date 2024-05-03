@@ -8,31 +8,6 @@ const postSchema = new Schema(
       trim: true,
       required: [true, "Post name not filled"],
     },
-    tags: {
-      type: [
-        {
-          type: String,
-          trim: true,
-          required: [true, "Post tags not filled"],
-        },
-      ],
-      validate: {
-        validator: (tags) => {
-          return tags.length > 0;
-        },
-        message: "Post tags must contain at least one element.",
-      },
-      required: [true, "Post tags not filled"],
-    },
-    type: {
-      type: String,
-      enum: ["group", "person"],
-      required: [true, "Post type not filled"],
-    },
-    image: {
-      type: String,
-      default: "",
-    },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -43,14 +18,39 @@ const postSchema = new Schema(
       trim: true,
       required: [true, "Content not filled"],
     },
-    likes: {
-      type: Number,
-      default: 0,
+    image: {
+      type: String,
+      default: "",
     },
-    comments: {
-      type: Number,
-      default: 0,
-    },
+    // tags: {
+    //   type: [
+    //     {
+    //       type: String,
+    //       trim: true,
+    //       required: [true, "Post tags not filled"],
+    //     },
+    //   ],
+    //   validate: {
+    //     validator: (tags) => {
+    //       return tags.length > 0;
+    //     },
+    //     message: "Post tags must contain at least one element.",
+    //   },
+    //   required: [true, "Post tags not filled"],
+    // },
+    // type: {
+    //   type: String,
+    //   enum: ["group", "person"],
+    //   required: [true, "Post type not filled"],
+    // },
+    // likes: {
+    //   type: Number,
+    //   default: 0,
+    // },
+    // comments: {
+    //   type: Number,
+    //   default: 0,
+    // },
   },
   { versionKey: false }
 );
