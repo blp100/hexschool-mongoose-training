@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "2d036273-e5ce-4cda-8161-44bc166c7f37",
+		"name": "Posts - Mid-term Full Stack",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23694205"
+	},
+	"item": [
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hexschool-midterm-fullstack.onrender.com/user/6634577c62c34463ec2a7909",
+					"protocol": "https",
+					"host": [
+						"hexschool-midterm-fullstack",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"user",
+						"6634577c62c34463ec2a7909"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hexschool-midterm-fullstack.onrender.com/posts",
+					"protocol": "https",
+					"host": [
+						"hexschool-midterm-fullstack",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"6634577c62c34463ec2a790b\",\n    \"content\": \"各位我有一個作戰計畫\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://hexschool-midterm-fullstack.onrender.com/posts",
+					"protocol": "https",
+					"host": [
+						"hexschool-midterm-fullstack",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Stevie Wonder",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
