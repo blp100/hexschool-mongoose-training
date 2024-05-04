@@ -1,14 +1,19 @@
-import AddPostButton from "@/components/AddPostButton"
-import Header from "../components/Header"
-import Image from "next/image"
-import { IconBell, IconThumbUp } from "@tabler/icons-react"
+import AddPostButton from "@/components/AddPostButton";
+import Header from "../components/Header";
+import Image from "next/image";
+import { IconBell, IconThumbUp } from "@tabler/icons-react";
+import Posts from "@/components/Posts";
+import { getPosts } from "@/lib/searchPosts";
+import { Post as PostType } from "@/lib/type";
 
-export default function Page() {
+export default async function Page() {
+  const posts: PostType[] = await getPosts("asc");
+
   return (
     <>
       <Header className={"mb-12"} />
-      <main className="mx-auto flex max-w-4xl justify-between gap-[27px]">
-        <article className="w-[65%] bg-slate-400"></article>
+      <main className="mx-auto flex max-w-4xl items-start justify-between gap-[27px] ">
+        <Posts className="w-[65%]" initialPosts={posts} />
         <section className="w-[35%] border-2 border-[#000400] bg-white px-6 py-8">
           <AddPostButton className="mb-6" />
           <div className="flex flex-col gap-[22px]">
@@ -39,5 +44,5 @@ export default function Page() {
         </section>
       </main>
     </>
-  )
+  );
 }
