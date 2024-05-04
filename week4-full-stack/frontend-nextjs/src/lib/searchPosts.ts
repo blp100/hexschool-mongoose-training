@@ -2,7 +2,7 @@ export async function getPosts(
   timeSort: string | null = null,
   query: string | null = null
 ) {
-  const fetchUrl = "http://localhost:3005/posts";
+  const fetchUrl = "https://hexschool-midterm-fullstack.onrender.com/posts?";
   const queryUrl = `?${timeSort ? `timeSort=${timeSort}` : ""}${query ? `&q=${query}` : ""}`;
 
   const response = await fetch(
