@@ -4,9 +4,9 @@ import errorHandler from "../libs/errorHandler.js";
 
 const getPosts = async (req, res) => {
   const timeSort = req.query.timeSort == "asc" ? "createdAt" : "-createdAt";
-  // const q =
-  //   req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
-  const posts = await PostModel.find()
+  const q =
+    req.query.q !== undefined ? { content: new RegExp(req.query.q) } : {};
+  const posts = await PostModel.find(q)
     .populate({
       path: "user",
       select: "name photo",
